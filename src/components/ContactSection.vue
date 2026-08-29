@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useReveal } from '../composables/useReveal'
 import { useI18n } from '../i18n'
 
 const { root } = useReveal()
-const { t, messages } = useI18n()
+const { t, locale, messages } = useI18n()
+
+const cvPath = computed(() =>
+  locale.value === 'pt' ? '/cv/Fernando_torres_dev.pdf' : '/cv/Fernando_torres_dev_en.pdf',
+)
 
 const contacts = [
   { key: 'email', value: 'Nando.torres1997@gmail.com', href: 'mailto:Nando.torres1997@gmail.com' },
@@ -37,7 +42,7 @@ const contacts = [
           </a>
         </div>
 
-        <a href="/cv-fernando-torres.pdf" download class="btn-primary mt-8">
+        <a :href="cvPath" download class="btn-primary mt-8">
           {{ t('contact.downloadCv') }}
         </a>
       </div>

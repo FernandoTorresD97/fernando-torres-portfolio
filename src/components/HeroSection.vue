@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useI18n } from '../i18n'
 
 const { t, locale, messages } = useI18n()
+
+const cvPath = computed(() =>
+  locale.value === 'pt' ? '/cv/Fernando_torres_dev.pdf' : '/cv/Fernando_torres_dev_en.pdf',
+)
 
 const roleIndex = ref(0)
 const displayed = ref('')
@@ -76,7 +80,7 @@ watch(locale, restart)
 
         <div class="mt-8 flex flex-wrap gap-4">
           <a href="#projetos" class="btn-primary">{{ t('hero.viewProjects') }}</a>
-          <a href="/cv-fernando-torres.pdf" download class="btn-ghost">
+          <a :href="cvPath" download class="btn-ghost">
             {{ t('hero.downloadCv') }}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke-linecap="round" stroke-linejoin="round" />

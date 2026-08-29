@@ -64,7 +64,7 @@ export const pt = {
   },
   architecture: {
     eyebrow: '04 · Arquitetura',
-    heading: 'Como as peças se conectam',
+    heading: 'FFComo as peças se conectam',
     subheading: 'A mesma espinha dorsal por trás dos três projetos: camadas separadas, contratos claros entre elas.',
     layers: [
       { name: 'Vue.js / TypeScript', desc: 'Interface e consumo de API' },
