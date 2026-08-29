@@ -10,7 +10,9 @@ const linkKeys = [
   { href: '#stack', key: 'stack' },
   { href: '#projetos', key: 'projects' },
   { href: '#arquitetura', key: 'architecture' },
+  { href: '#resume', key: 'resume' },
   { href: '#contato', key: 'contact' },
+
 ] as const
 
 function close() {

@@ -4,6 +4,7 @@ export const pt = {
     stack: 'Stack',
     projects: 'Projetos',
     architecture: 'Arquitetura',
+    resume: 'Currículo',
     contact: 'Contato',
     contactCta: 'Contactar',
   },
@@ -80,8 +81,22 @@ export const pt = {
     deployTitle: 'Deploy',
     deployDesc: 'Vercel/Netlify (frontend) · Render (backend)',
   },
+  resume: {
+    eyebrow: '05 · Currículo',
+    heading: 'Meu currículo',
+    view: 'Visualizar',
+    download: 'Baixar',
+    portuguese: {
+      title: 'Currículo em Português',
+      description: 'Currículo profissional em português, com foco em desenvolvimento Java Backend e engenharia de software.',
+    },
+    english: {
+      title: 'Currículo em Inglês',
+      description: 'Versão em inglês do meu currículo profissional para oportunidades internacionais.',
+    },
+  },
   contact: {
-    eyebrow: '05 · Contato',
+    eyebrow: '06 · Contato',
     heading: 'Vamos trabalhar juntos?',
     body: 'Disponível para relocalização imediata para Portugal, com alojamento assegurado. Aberto a entrevistas online via Teams, Zoom ou Google Meet.',
     downloadCv: 'Download CV',

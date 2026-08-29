@@ -4,6 +4,7 @@ export const en = {
     stack: 'Stack',
     projects: 'Projects',
     architecture: 'Architecture',
+    resume: 'Resume',
     contact: 'Contact',
     contactCta: 'Get in touch',
   },
@@ -81,8 +82,22 @@ export const en = {
     deployTitle: 'Deploy',
     deployDesc: 'Vercel/Netlify (frontend) · Render (backend)',
   },
+  resume: {
+    eyebrow: '05 · Resume',
+    heading: 'My resume',
+    view: 'View',
+    download: 'Download',
+    portuguese: {
+      title: 'Portuguese CV',
+      description: 'Professional resume in Portuguese, focused on Java Backend and software development.',
+    },
+    english: {
+      title: 'English Resume',
+      description: 'English version of my professional resume for international opportunities.',
+    },
+  },
   contact: {
-    eyebrow: '05 · Contact',
+    eyebrow: '06 · Contact',
     heading: "Let's work together?",
     body: 'Available for immediate relocation to Portugal, with accommodation secured. Open to online interviews via Teams, Zoom or Google Meet.',
     downloadCv: 'Download CV',
