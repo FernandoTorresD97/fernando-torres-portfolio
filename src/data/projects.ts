@@ -15,6 +15,54 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'clinicflow',
+    status: 'done',
+    title: 'ClinicFlow',
+    tagline: {
+      pt: 'Sistema full-stack de gestão de pacientes, com arquitetura de microsserviços',
+      en: 'Full-stack patient management system with a microservices architecture',
+    },
+    description: {
+      pt: 'Sistema de gestão de pacientes construído com arquitetura de microsserviços: serviços dedicados de autenticação, gestão de pacientes, faturamento e notificações, comunicando-se entre si via REST/WebClient. Persistência com PostgreSQL no padrão database-per-service e frontend em React consumindo a API.',
+      en: 'Patient management system built with a microservices architecture: dedicated services for authentication, patient management, billing and notifications, communicating via REST/WebClient. PostgreSQL persistence following the database-per-service pattern, with a React frontend consuming the API.',
+    },
+    stack: [
+      'Java',
+      'Spring Boot',
+      'Spring Security',
+      'Spring Data JPA',
+      'PostgreSQL',
+      'JWT',
+      'WebClient',
+      'Docker',
+      'React',
+      'Vite',
+      'Swagger/OpenAPI',
+    ],
+    highlights: {
+      pt: [
+        'Arquitetura de microsserviços: auth, pacientes, faturamento e notificações',
+        'Banco de dados no padrão database-per-service (PostgreSQL)',
+        'Autenticação e autorização com JWT entre serviços',
+        'Comunicação entre serviços via REST/WebClient',
+        'Modelagem de dados de pacientes e histórico clínico',
+        'API REST documentada com Swagger/OpenAPI, containerizada com Docker',
+        'Frontend em React consumindo a API',
+      ],
+      en: [
+        'Microservices architecture: auth, patient management, billing and notifications',
+        'Database-per-service pattern (PostgreSQL)',
+        'JWT-based authentication and authorization across services',
+        'Inter-service communication via REST/WebClient',
+        'Patient and clinical history data modeling',
+        'REST API documented with Swagger/OpenAPI, containerized with Docker',
+        'React frontend consuming the API',
+      ],
+    },
+    github: 'https://github.com/FernandoTorresD97',
+    featured: true,
+  },
+  {
     id: 'notification-api',
     status: 'done',
     title: 'Notification API',
@@ -43,8 +91,7 @@ export const projects: Project[] = [
         'Packaged with Docker Compose',
       ],
     },
-    github: 'https://github.com/FernandoTorresD97/notification-api',
-    featured: true,
+    github: 'https://github.com/FernandoTorresD97',
   },
   {
     id: 'sistema-ordens-servico',
@@ -76,39 +123,6 @@ export const projects: Project[] = [
       ],
     },
     github: 'https://github.com/FernandoTorresD97',
-  },
-  {
-    id: 'clinic-flow',
-    status: 'done',
-    title: 'Clinic Flow',
-    tagline: {
-      pt: 'Sistema de gestão de pacientes',
-      en: 'Patient management system',
-    },
-    description: {
-      pt: 'Sistema backend voltado para a gestão de pacientes, cobrindo cadastro, histórico e organização de dados clínicos com foco em integridade e segurança da informação.',
-      en: 'Backend system for patient management, covering registration, history and clinical data organization with a focus on data integrity and security.',
-    },
-    stack: ['Java', 'Spring Boot', 'PostgreSQL', 'Spring Data JPA', 'Spring Security', 'Maven', 'WebClient', 'JWT', 'Vite', 'JavaScript', "React", 'Docker', 'Swagger/OpenAPI' ],
-    highlights: {
-      pt: [
-        'Modelagem de dados de pacientes e histórico clínico',
-        'Estruturação de camadas Controller / Service / Repository',
-        'Validações e regras de negócio no domínio de saúde',
-        'Tratamento de exceções e respostas padronizadas da API',
-        'Implementação de API REST para operações de cadastro e consulta',
-        'Persistência e gerenciamento de dados com JPA / Hibernate',
-      ],
-      en: [
-        'Patient and clinical history data modeling',
-        'Controller / Service / Repository layer structuring',
-        'Validations and business rules in the healthcare domain',
-        'Exception handling and standardized API responses',
-        'REST API implementation for registration and data retrieval operations',
-        'Data persistence and management using JPA / Hibernate',
-      ],
-    },
-    github: 'https://github.com/FernandoTorresD97/clinicflow',
   },
 ]
 

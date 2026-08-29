@@ -13,7 +13,7 @@ export const skillGroups: SkillGroup[] = [
   {
     category: 'Frontend',
     icon: '🖥️',
-    items: ['Vue.js', 'Vue 3', 'TypeScript', 'Tailwind CSS'],
+    items: ['Vue.js', 'Vue 3', 'React', 'TypeScript', 'Tailwind CSS'],
   },
   {
     category: 'Dados',
