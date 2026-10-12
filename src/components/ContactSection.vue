@@ -11,7 +11,7 @@ const cvPath = computed(() =>
 )
 
 const contacts = [
-  { key: 'email', value: 'Nando.torres1997@gmail.com', href: 'mailto:Nando.torres1997@gmail.com' },
+  { key: 'email', value: 'nando.torres1997@outlook.com', href: 'mailto:nando.torres1997@outlook.com' },
   { key: 'linkedin', value: 'linkedin.com/in/fernandotorresdias', href: 'https://linkedin.com/in/fernandotorresdias/' },
   { key: 'github', value: 'github.com/FernandoTorresD97', href: 'https://github.com/FernandoTorresD97' },
 ] as const
