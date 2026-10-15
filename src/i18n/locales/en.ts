@@ -80,7 +80,7 @@ export const en = {
     ciTitle: 'Continuous integration',
     ciDesc: 'GitHub Actions for Notification API build and tests',
     deployTitle: 'Deploy',
-    deployDesc: 'Netlify hosting for this portfolio',
+    deployDesc: 'GitHub Pages hosting for this portfolio',
   },
   resume: {
     eyebrow: '05 · Resume',
