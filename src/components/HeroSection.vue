@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from '../i18n'
 const { t, locale } = useI18n()
 const cvPath = computed(() => locale.value === 'pt' ? `${import.meta.env.BASE_URL}cv/Fernando_torres_dev.pdf` : `${import.meta.env.BASE_URL}cv/Fernando_torres_dev_en.pdf`)
+const portraitPath = `${import.meta.env.BASE_URL}images/fernando.png`
 const stack = ['Java', 'Spring Boot', 'Vue.js', 'TypeScript', 'PostgreSQL', 'Docker']
 </script>
 
@@ -27,7 +28,7 @@ const stack = ['Java', 'Spring Boot', 'Vue.js', 'TypeScript', 'PostgreSQL', 'Doc
       </div>
       <div class="hero-visual">
         <div class="portrait-frame">
-          <img :src="`${import.meta.env.BASE_URL}images/fernando.png`" alt="Fernando Torres" width="471" height="836" fetchpriority="high" />
+          <img :src="portraitPath" alt="Fernando Torres" width="471" height="836" fetchpriority="high" />
           <span class="portrait-caption">&lt; developer /&gt;</span>
         </div>
         <div class="code-window">
