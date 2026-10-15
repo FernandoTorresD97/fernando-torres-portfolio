@@ -46,7 +46,10 @@ const { t, locale } = useI18n()
           <span v-for="tech in project.stack" :key="tech" class="tag">{{ tech }}</span>
         </div>
 
-        <div class="mt-6 pt-5 border-t border-base-line flex gap-4">
+        <div class="mt-auto pt-5 border-t border-base-line flex flex-wrap items-center gap-4">
+          <a v-if="project.demo" :href="project.demo" target="_blank" rel="noopener" class="btn-primary">
+            {{ locale === 'pt' ? 'Abrir demonstração ↗' : 'Open demo ↗' }}
+          </a>
           <a
             v-if="project.github"
             :href="project.github"

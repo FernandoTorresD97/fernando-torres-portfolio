@@ -60,7 +60,7 @@ export const projects: Project[] = [
       ],
     },
     github: 'https://github.com/FernandoTorresD97/clinicflow',
-    featured: true,
+    featured: false,
   },
   {
     id: 'notification-api',
@@ -102,15 +102,17 @@ export const projects: Project[] = [
       en: 'API and dashboard for customer service and order management',
     },
     description: {
-      pt: 'Projeto pessoal em desenvolvimento e demonstração local, com API Java/Spring Boot e painel Vue. Inclui cardápio, pedidos, frete e resumo de vendas. Atendimento demonstrado por simulador; integrações reais de WhatsApp e pagamentos e o ambiente de produção ainda precisam de configuração e homologação.',
-      en: 'Personal project in development and local demonstration, with a Java/Spring Boot API and Vue dashboard. Includes menu, orders, delivery fees and sales summaries. Customer conversations use a simulator; real WhatsApp/payment integrations and production setup require configuration and validation.',
+      pt: 'API Java/Spring Boot com PostgreSQL, migrações Flyway, testes de integração e controle de concorrência nos pedidos. Painel Vue com login e execução preparada com Docker Compose. A demonstração pública usa dados fictícios no navegador; pagamentos e mensagens reais ainda não estão integrados.',
+      en: 'Java/Spring Boot API with PostgreSQL, Flyway migrations, integration tests and optimistic concurrency control for orders. Vue dashboard with runtime login and Docker Compose setup. The public demo uses fictional browser-local data; real payments and messaging are not integrated.',
     },
-    stack: ['Java 21', 'Spring Boot', 'Spring Data JPA', 'Spring Security', 'Vue 3', 'Maven', 'Flyway'],
+    stack: ['Java 21', 'Spring Boot', 'PostgreSQL', 'Spring Security', 'Vue 3', 'Flyway', 'JUnit 5', 'Docker Compose', 'GitHub Actions'],
     highlights: {
       pt: ['Cardápio e criação de pedidos', 'Cálculo de frete e acompanhamento por status', 'Confirmação administrativa de PIX', 'Resumo diário de vendas', 'Simulador de atendimento conversacional'],
       en: ['Menu and order creation', 'Delivery fee calculation and status tracking', 'Administrative PIX confirmation', 'Daily sales summaries', 'Customer conversation simulator'],
     },
     github: 'https://github.com/FernandoTorresD97/automatizacao-artpizza',
+    demo: 'https://fernandotorresd97.github.io/automatizacao-artpizza/',
+    featured: true,
   },
 ]
 
