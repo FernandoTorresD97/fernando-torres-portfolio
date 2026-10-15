@@ -79,7 +79,7 @@ export const pt = {
     ciTitle: 'Integração contínua',
     ciDesc: 'GitHub Actions para build e testes da Notification API',
     deployTitle: 'Deploy',
-    deployDesc: 'Netlify para publicação deste portfólio',
+    deployDesc: 'GitHub Pages para publicação deste portfólio',
   },
   resume: {
     eyebrow: '05 · Currículo',

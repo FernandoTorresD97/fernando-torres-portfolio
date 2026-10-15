@@ -4,7 +4,7 @@ Portfólio profissional desenvolvido com **Vue 3, TypeScript, Vite e Tailwind CS
 
 🎯 Foco profissional: **Java Developer | Backend Engineer | Full Stack Developer**
 
-🌐 **Portfólio:** em breve
+🌐 **Portfólio:** https://fernandotorresd97.github.io/fernando-torres-portfolio/
 
 ## Tecnologias
 
@@ -90,3 +90,7 @@ O deploy pode ser integrado diretamente ao GitHub para atualização automática
 
 * LinkedIn: [Fernando Torres](https://www.linkedin.com/in/fernandotorresdias/)
 * GitHub: [FernandoTorresD97](https://github.com/FernandoTorresD97)
+
+## GitHub Pages
+
+A publicação é atualizada automaticamente a cada push na branch `main`, pelo workflow `.github/workflows/deploy.yml`. No GitHub, em Settings → Pages, selecione GitHub Actions como origem.

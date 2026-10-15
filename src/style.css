@@ -85,7 +85,7 @@ body { background: #090611; }
 .container-px { max-width: 1320px; margin-inline: auto; }
 section[id] { scroll-margin-top: 84px; }
 .space-hero { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(ellipse at 85% 10%, #602a8c33, transparent 60%), #090611; }
-.space-hero::before { content: ''; position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg,#090611 3%,#090611aa 42%,#09061155), url('/images/nebula.png') center 20% / cover; opacity: .58; }
+.space-hero::before { content: ''; position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg,#090611 3%,#090611aa 42%,#09061155), url('../public/images/nebula.png') center 20% / cover; opacity: .58; }
 .space-hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background-image: radial-gradient(circle, #e6cfff80 .7px, transparent 1px),linear-gradient(0deg,#090611,transparent 40%); background-size: 83px 97px,100% 100%; pointer-events: none; }
 .hero-layout { display: grid; grid-template-columns: 1.12fr 1fr; gap: 64px; align-items: center; padding-top: 66px; padding-bottom: 64px; }
 .hero-copy h1 { font-family: 'Space Grotesk',sans-serif; font-size: clamp(38px,4.2vw,60px); letter-spacing: -.045em; line-height: 1.12; margin-top: 20px; font-weight: 700; }

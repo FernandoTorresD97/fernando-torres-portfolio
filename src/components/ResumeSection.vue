@@ -3,8 +3,8 @@ import { useI18n } from '../i18n'
 
 const { t } = useI18n()
 
-const cvPortuguese = '/cv/Fernando_torres_dev.pdf'
-const cvEnglish = '/cv/Fernando_torres_dev_en.pdf'
+const cvPortuguese = `${import.meta.env.BASE_URL}cv/Fernando_torres_dev.pdf`
+const cvEnglish = `${import.meta.env.BASE_URL}cv/Fernando_torres_dev_en.pdf`
 </script>
 
 <template>

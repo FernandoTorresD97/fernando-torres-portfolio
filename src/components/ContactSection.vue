@@ -7,7 +7,7 @@ const { root } = useReveal()
 const { t, locale, messages } = useI18n()
 
 const cvPath = computed(() =>
-  locale.value === 'pt' ? '/cv/Fernando_torres_dev.pdf' : '/cv/Fernando_torres_dev_en.pdf',
+  locale.value === 'pt' ? `${import.meta.env.BASE_URL}cv/Fernando_torres_dev.pdf` : `${import.meta.env.BASE_URL}cv/Fernando_torres_dev_en.pdf`,
 )
 
 const contacts = [
