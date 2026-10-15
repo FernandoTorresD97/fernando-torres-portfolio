@@ -93,4 +93,4 @@ O deploy pode ser integrado diretamente ao GitHub para atualização automática
 
 ## GitHub Pages
 
-A publicação é atualizada automaticamente a cada push na branch `main`, pelo workflow `.github/workflows/deploy.yml`. No GitHub, em Settings → Pages, selecione GitHub Actions como origem.
+A publicação é atualizada automaticamente a cada push na branch `main`, pelo workflow `.github/workflows/deploy.yml`. O workflow publica os arquivos compilados na branch `gh-pages` e solicita o build do Pages. Em Settings → Pages, a origem é Deploy from a branch → `gh-pages` → `/ (root)`.
