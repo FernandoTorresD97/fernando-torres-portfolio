@@ -50,6 +50,9 @@ const { t, locale } = useI18n()
           <a v-if="project.demo" :href="project.demo" target="_blank" rel="noopener" class="btn-primary">
             {{ locale === 'pt' ? 'Abrir demonstração ↗' : 'Open demo ↗' }}
           </a>
+          <a v-if="project.docs" :href="project.docs" target="_blank" rel="noopener" class="btn-primary">
+            {{ locale === 'pt' ? 'Abrir Swagger ↗' : 'Open Swagger ↗' }}
+          </a>
           <a
             v-if="project.github"
             :href="project.github"

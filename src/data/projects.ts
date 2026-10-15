@@ -10,6 +10,7 @@ export interface Project {
   highlights: { pt: string[]; en: string[] }
   github?: string
   demo?: string
+  docs?: string
   featured?: boolean
 }
 
@@ -71,27 +72,28 @@ export const projects: Project[] = [
       en: 'REST API for notification scheduling and processing',
     },
     description: {
-      pt: 'Projeto pessoal com Java 21, Spring Boot e PostgreSQL para cadastro, agendamento e processamento de notificações com envio simulado. Inclui testes unitários, Docker Compose, Swagger/OpenAPI e integração contínua.',
-      en: 'Personal project with Java 21, Spring Boot and PostgreSQL for creating, scheduling and processing notifications with simulated delivery. Includes unit tests, Docker Compose, Swagger/OpenAPI and continuous integration.',
+      pt: 'API Java 21/Spring Boot com PostgreSQL, RabbitMQ e envio SMTP validado em laboratório. Inclui retentativas, fila de falhas, idempotência, histórico e migrações Flyway. API e Swagger publicados no Render; o envio de e-mails está desativado no ambiente público.',
+      en: 'Java 21/Spring Boot API with PostgreSQL, RabbitMQ and SMTP delivery verified in a test environment. Includes retries, a dead-letter queue, idempotency, delivery history and Flyway migrations. API and Swagger hosted on Render; email delivery is disabled in the public environment.',
     },
-    stack: ['Java 21', 'Spring Boot', 'Spring Data JPA', 'PostgreSQL', 'Maven', 'Docker', 'Swagger/OpenAPI'],
+    stack: ['Java 21', 'Spring Boot', 'PostgreSQL', 'RabbitMQ', 'SMTP', 'Flyway', 'Testcontainers', 'Docker', 'Swagger/OpenAPI'],
     highlights: {
       pt: [
-        'Modelagem de relacionamentos entre Notification, Channel e Status',
-        'Processamento agendado com entrega simulada',
-        'Tratamento global de exceções e validação de DTOs',
-        'Testes unitários e documentação via Swagger/OpenAPI',
-        'Empacotado com Docker Compose',
+        '28 testes com PostgreSQL, SMTP de teste e RabbitMQ',
+        'Retentativas com intervalo exponencial e fila de falhas',
+        'Idempotência e histórico persistente de tentativas',
+        'Teste do JAR e do Swagger no GitHub Actions',
+        'Laboratório Docker Compose com Mailpit',
       ],
       en: [
-        'Data modeling for Notification, Channel and Status relationships',
-        'Scheduled processing with simulated delivery',
-        'Global exception handling and DTO validation',
-        'Unit tests and Swagger/OpenAPI documentation',
-        'Packaged with Docker Compose',
+        '28 tests covering PostgreSQL, test SMTP and RabbitMQ',
+        'Exponential retries and a dead-letter queue',
+        'Idempotency and persisted delivery attempt history',
+        'Packaged JAR and Swagger smoke test in GitHub Actions',
+        'Docker Compose lab with Mailpit',
       ],
     },
     github: 'https://github.com/FernandoTorresD97/notification-api',
+    docs: 'https://notification-api-il76.onrender.com/swagger-ui.html',
   },
   {
     id: 'automatizacao-artpizza',
