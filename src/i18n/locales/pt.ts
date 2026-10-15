@@ -56,7 +56,7 @@ export const pt = {
   projects: {
     eyebrow: '03 · Projetos',
     heading: 'O que já construí',
-    subheading: 'Três projetos, não quinze tutoriais. Cada um mostra arquitetura, persistência e decisões reais de backend.',
+    subheading: 'Projetos que conectam arquitetura, persistência e soluções para problemas reais.',
     statusDone: 'Concluído',
     statusInProgress: 'Em desenvolvimento',
     mainProject: 'Projeto principal',
@@ -64,7 +64,7 @@ export const pt = {
   },
   architecture: {
     eyebrow: '04 · Arquitetura',
-    heading: 'FFComo as peças se conectam',
+    heading: 'Como as peças se conectam',
     subheading: 'A mesma espinha dorsal por trás dos três projetos: camadas separadas, contratos claros entre elas.',
     layers: [
       { name: 'Vue.js / TypeScript', desc: 'Interface e consumo de API' },

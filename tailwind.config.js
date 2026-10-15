@@ -5,19 +5,19 @@ export default {
     extend: {
       colors: {
         base: {
-          bg: '#0A0D12',
-          surface: '#101520',
-          raised: '#161C29',
-          line: '#232B3A',
+          bg: '#090611',
+          surface: '#110C1F',
+          raised: '#1B122D',
+          line: '#302141',
         },
         ink: {
           DEFAULT: '#E7ECF3',
-          muted: '#8C97AB',
-          faint: '#5B6577',
+          muted: '#B3A9C6',
+          faint: '#8F819F',
         },
         signal: {
-          blue: '#4C8DFF',
-          blueDim: '#2E4E8F',
+          blue: '#A78BFA',
+          blueDim: '#6D28D9',
           amber: '#F0A84E',
           green: '#5FD8A6',
         },

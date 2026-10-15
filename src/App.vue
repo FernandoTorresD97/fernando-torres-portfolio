@@ -1,4 +1,4 @@
-tree /F<script setup lang="ts">
+<script setup lang="ts">
 import TheNav from './components/TheNav.vue'
 import HeroSection from './components/HeroSection.vue'
 import AboutSection from './components/AboutSection.vue'
