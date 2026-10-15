@@ -12,20 +12,23 @@ export interface Project {
   demo?: string
   docs?: string
   featured?: boolean
+  image?: string
+  imageAlt?: { pt: string; en: string }
+  details?: string
 }
 
 export const projects: Project[] = [
   {
-    id: 'clinicflow',
-    status: 'done',
-    title: 'ClinicFlow',
+    id: 'fiolaser',
+    status: 'in-progress',
+    title: 'Fiolaser · Agendamentos',
     tagline: {
-      pt: 'Sistema full-stack de gestão de pacientes, com arquitetura de microsserviços',
-      en: 'Full-stack patient management system with a microservices architecture',
+      pt: 'Agenda, área do cliente e gestão de uma clínica de estética',
+      en: 'Scheduling, customer accounts and beauty clinic administration',
     },
     description: {
-      pt: 'Sistema de demonstração para gestão de pacientes construído com arquitetura de microsserviços: serviços dedicados de autenticação, gestão de pacientes, faturamento e notificações, comunicando-se entre si via REST/WebClient. Persistência com PostgreSQL no padrão database-per-service e frontend em React consumindo a API.',
-      en: 'Patient management demonstration built with a microservices architecture: dedicated services for authentication, patient management, billing and notifications, communicating via REST/WebClient. PostgreSQL persistence following the database-per-service pattern, with a React frontend using JavaScript and Vite to consume the API.',
+      pt: 'Projeto full-stack com Java 21, Spring Boot, PostgreSQL e interface HTML/CSS/JavaScript. Inclui catálogo de 33 procedimentos, reservas com controle de sobreposição, autenticação JWT e painel administrativo. Confirmações usam outbox e Kafka. Demo interativa com perfis fictícios e dados locais no navegador; backend, AWS e pagamentos online não estão conectados à demo.',
+      en: 'Full-stack project with Java 21, Spring Boot, PostgreSQL and an HTML/CSS/JavaScript frontend. Includes 33 treatments, overlapping-booking prevention, JWT authentication and an administration panel. Confirmations use an outbox and Kafka. Interactive demo with fictional profiles and browser-local data; the backend, AWS and online payments are not connected to the demo.',
     },
     stack: [
       'Java',
@@ -34,33 +37,32 @@ export const projects: Project[] = [
       'Spring Data JPA',
       'PostgreSQL',
       'JWT',
-      'WebClient',
+      'Kafka',
       'Docker',
-      'React',
-      'Vite',
-      'Swagger/OpenAPI',
+      'JavaScript',
+      'Flyway',
+      'JUnit 5',
     ],
     highlights: {
       pt: [
-        'Arquitetura de microsserviços: auth, pacientes, faturamento e notificações',
-        'Banco de dados no padrão database-per-service (PostgreSQL)',
-        'Autenticação e autorização com JWT entre serviços',
-        'Comunicação entre serviços via REST/WebClient',
-        'Modelagem de dados de pacientes e histórico clínico',
-        'API REST documentada com Swagger/OpenAPI, containerizada com Docker',
-        'Frontend React com JavaScript e Vite consumindo a API',
+        '31 testes com PostgreSQL real, sem testes ignorados',
+        'Agenda considera duração e impede reservas sobrepostas',
+        'JWT com revogação e limites de autenticação no PostgreSQL',
+        'Área do cliente, administração e exportação CSV',
+        'Outbox transacional e notificações com Kafka',
       ],
       en: [
-        'Microservices architecture: auth, patient management, billing and notifications',
-        'Database-per-service pattern (PostgreSQL)',
-        'JWT-based authentication and authorization across services',
-        'Inter-service communication via REST/WebClient',
-        'Patient and clinical history data modeling',
-        'REST API documented with Swagger/OpenAPI, containerized with Docker',
-        'React frontend using JavaScript and Vite to consume the API',
+        '31 tests using real PostgreSQL, with none skipped',
+        'Duration-aware scheduling prevents overlapping bookings',
+        'Revocable JWTs and database-backed authentication limits',
+        'Customer accounts, administration and CSV exports',
+        'Transactional outbox and Kafka notifications',
       ],
     },
-    github: 'https://github.com/FernandoTorresD97/clinicflow',
+    image: 'projects/fiolaser/interface.png',
+    imageAlt: { pt: 'Interface da Fiolaser com os novos cartões ilustrados de tratamentos', en: 'Fiolaser interface with illustrated treatment cards' },
+    demo: 'https://fernandotorresd97.github.io/fernando-torres-portfolio/demos/fiolaser/',
+    details: 'demos/fiolaser/sobre-projeto.html',
     featured: false,
   },
   {

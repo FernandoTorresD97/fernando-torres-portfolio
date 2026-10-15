@@ -5,6 +5,7 @@ import { useI18n } from '../i18n'
 
 const { root } = useReveal()
 const { t, locale } = useI18n()
+const baseUrl = import.meta.env.BASE_URL
 </script>
 
 <template>
@@ -22,6 +23,9 @@ const { t, locale } = useI18n()
         class="reveal card p-6 flex flex-col"
         :class="project.featured ? 'lg:col-span-1 ring-1 ring-signal-blue/30' : ''"
       >
+        <a v-if="project.image && project.details" :href="`${baseUrl}${project.details}`" class="block -mx-6 -mt-6 mb-6 overflow-hidden rounded-t-2xl border-b border-base-line focus-visible:outline focus-visible:outline-2 focus-visible:outline-signal-blue">
+          <img :src="`${baseUrl}${project.image}`" :alt="project.imageAlt?.[locale] || project.title" class="w-full aspect-[16/10] object-cover object-top transition-transform duration-300 hover:scale-[1.025]" loading="lazy" width="1265" height="712">
+        </a>
         <div class="flex items-center justify-between">
           <span
             class="font-mono text-[11px] uppercase tracking-wider px-2 py-1 rounded"
@@ -47,6 +51,9 @@ const { t, locale } = useI18n()
         </div>
 
         <div class="mt-auto pt-5 border-t border-base-line flex flex-wrap items-center gap-4">
+          <a v-if="project.details" :href="`${baseUrl}${project.details}`" class="btn-primary">
+            {{ locale === 'pt' ? 'Conhecer o projeto ↗' : 'Explore the project ↗' }}
+          </a>
           <a v-if="project.demo" :href="project.demo" target="_blank" rel="noopener" class="btn-primary">
             {{ locale === 'pt' ? 'Abrir demonstração ↗' : 'Open demo ↗' }}
           </a>
