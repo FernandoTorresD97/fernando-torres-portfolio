@@ -929,7 +929,8 @@ img { max-width: 100%; display: block; }
   .hero-carrossel, .hero-slide { min-height: 380px; }
   .hero-slide-foto { min-height: 0; }
   .hero-slide { padding: 0 28px; }
-  .nav { display: none; }
+  .topbar-inner { flex-wrap: wrap; }
+  .nav { display: flex; flex-wrap: wrap; order: 3; width: 100%; gap: 12px 20px; padding-top: 12px; }
 }
 
 [hidden] { display: none !important; }
