@@ -1,4 +1,3 @@
-```vue
 <script setup lang="ts">
 import { useI18n } from '../i18n'
 
@@ -105,4 +104,3 @@ const cvEnglish = '/cv/Fernando_torres_dev_en.pdf'
     </div>
   </section>
 </template>
-```

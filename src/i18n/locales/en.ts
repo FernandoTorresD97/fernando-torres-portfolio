@@ -9,10 +9,10 @@ export const en = {
     contactCta: 'Get in touch',
   },
   hero: {
-    availability: 'Available for Portugal · immediate relocation',
+    availability: 'Open to opportunities in Brazil and Portugal',
     roles: ['Java Developer', 'Spring Boot', 'Backend Engineer', 'REST/SOAP APIs'],
     intro:
-      'Full Stack Developer focused on Java and Spring Boot, with experience in REST/SOAP APIs, PostgreSQL, process automation and systems integration. Also experienced in technical support and legacy Java EE systems.',
+      'Java developer with experience in APIs, SaaS applications, databases and system maintenance. Worked on backend and frontend tasks with Java, Spring Boot and Vue.js.',
     viewProjects: 'View projects',
     downloadCv: 'Download CV',
     terminalRequest: 'Matching profile found',
@@ -28,24 +28,24 @@ export const en = {
     p1_mid2: 'Spring Boot + Vue.js',
     p1_end: ', process automation with cron jobs, and integration between platforms.',
     p2_before:
-      "I'm currently rebuilding and expanding these projects as a portfolio, focused on solid architecture, testing and documentation practices — looking for opportunities as a",
+      "I currently develop personal backend projects focused on testing, documentation and system integration. I am looking for opportunities as a",
     p2_mid: 'Java Developer / Backend Engineer',
-    p2_after: 'in Portugal, available for immediate relocation.',
+    p2_after: 'in Brazil and Portugal. Relocation to Portugal requires a work visa and employer support with the process.',
     facts: {
       experience: 'Experience',
-      experienceValue: '2020 – 2025 · MB Company',
+      experienceValue: 'Feb 2020 – Dec 2025 · Junior Developer · MB Company',
       focus: 'Current focus',
       focusValue: 'Java · Spring Boot · REST APIs',
       education: 'Education',
-      educationValue: 'Systems Analysis & Development · UNOPAR',
+      educationValue: 'Technology degree in Systems Analysis & Development · UNOPAR · 2024–2028 · in progress',
       languages: 'Languages',
-      languagesValue: 'PT native · EN A2 · ES A2',
+      languagesValue: 'Portuguese native · English B1',
     },
   },
   skills: {
     eyebrow: '02 · Stack',
-    heading: 'Technologies I actually use',
-    subheading: "No list of 40 buzzwords — everything here I can explain and defend in a technical interview.",
+    heading: 'Technical skills',
+    subheading: "Technologies used in professional experience and personal projects.",
     categories: {
       Backend: 'Backend',
       Frontend: 'Frontend',
@@ -57,7 +57,7 @@ export const en = {
   projects: {
     eyebrow: '03 · Projects',
     heading: "What I've built",
-    subheading: 'Three projects, not fifteen tutorials. Each one shows real backend architecture, persistence and decisions.',
+    subheading: 'Personal projects with APIs, persistence and component integration. Each description states the implementation stage.',
     statusDone: 'Completed',
     statusInProgress: 'In progress',
     mainProject: 'Flagship project',
@@ -66,10 +66,10 @@ export const en = {
   architecture: {
     eyebrow: '04 · Architecture',
     heading: 'How the pieces connect',
-    subheading: 'The same backbone behind all three projects: separated layers, clear contracts between them.',
+    subheading: 'Overview of layers used in the projects. Technologies and infrastructure vary by application.',
     layers: [
-      { name: 'Vue.js / TypeScript', desc: 'UI and API consumption' },
-      { name: 'REST API', desc: 'JSON contracts, JWT authentication' },
+      { name: 'React / Vue.js', desc: 'UI and API consumption' },
+      { name: 'REST API', desc: 'JSON contracts and project-specific access control' },
       { name: 'Spring Boot', desc: 'Controllers, validation, exception handling' },
       { name: 'Service Layer', desc: 'Business rules' },
       { name: 'Repository / JPA', desc: 'Persistence and queries' },
@@ -77,10 +77,10 @@ export const en = {
     ],
     infraTitle: 'Infra',
     infraDesc: 'Docker & Docker Compose for local packaging',
-    ciTitle: 'CI/CD',
-    ciDesc: 'GitHub Actions for automated build and tests',
+    ciTitle: 'Continuous integration',
+    ciDesc: 'GitHub Actions for Notification API build and tests',
     deployTitle: 'Deploy',
-    deployDesc: 'Vercel/Netlify (frontend) · Render (backend)',
+    deployDesc: 'Netlify hosting for this portfolio',
   },
   resume: {
     eyebrow: '05 · Resume',
@@ -99,7 +99,7 @@ export const en = {
   contact: {
     eyebrow: '06 · Contact',
     heading: "Let's work together?",
-    body: 'Available for immediate relocation to Portugal, with accommodation secured. Open to online interviews via Teams, Zoom or Google Meet.',
+    body: 'Seeking Java backend and system integration opportunities in Brazil. Also considering Portugal, with relocation subject to a work visa and employer support. Available for online interviews.',
     downloadCv: 'Download CV',
     labels: {
       email: 'Email',
