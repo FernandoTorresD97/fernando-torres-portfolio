@@ -62,6 +62,7 @@ export const projects: Project[] = [
     image: 'projects/fiolaser/interface.png',
     imageAlt: { pt: 'Interface da Fiolaser com os novos cartões ilustrados de tratamentos', en: 'Fiolaser interface with illustrated treatment cards' },
     demo: 'https://fernandotorresd97.github.io/fernando-torres-portfolio/demos/fiolaser/',
+    github: 'https://github.com/FernandoTorresD97/fiolaser-app',
     details: 'demos/fiolaser/sobre-projeto.html',
     featured: false,
   },
