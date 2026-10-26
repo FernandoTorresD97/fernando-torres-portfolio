@@ -59,7 +59,7 @@ export const pt = {
     subheading: 'Projetos pessoais com APIs, persistência e integração entre componentes. Cada descrição indica o estágio da implementação.',
     statusDone: 'Concluído',
     statusInProgress: 'Em desenvolvimento',
-    mainProject: 'Projeto principal',
+    mainProject: 'Destaque',
     code: 'Código',
   },
   architecture: {

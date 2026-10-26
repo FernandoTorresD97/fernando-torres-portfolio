@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { projects, statusLabel } from '../data/projects'
 import { useReveal } from '../composables/useReveal'
 import { useI18n } from '../i18n'
@@ -6,6 +7,10 @@ import { useI18n } from '../i18n'
 const { root } = useReveal()
 const { t, locale } = useI18n()
 const baseUrl = import.meta.env.BASE_URL
+const orderedProjects = computed(() => {
+  const priority = ['notification-api', 'automatizacao-artpizza', 'fiolaser']
+  return [...projects].sort((a, b) => priority.indexOf(a.id) - priority.indexOf(b.id))
+})
 </script>
 
 <template>
@@ -18,7 +23,7 @@ const baseUrl = import.meta.env.BASE_URL
 
     <div class="mt-12 grid lg:grid-cols-3 gap-6">
       <article
-        v-for="project in projects"
+        v-for="project in orderedProjects"
         :key="project.id"
         class="reveal card p-6 flex flex-col"
         :class="project.featured ? 'lg:col-span-1 ring-1 ring-signal-blue/30' : ''"

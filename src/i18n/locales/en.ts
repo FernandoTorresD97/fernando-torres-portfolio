@@ -60,7 +60,7 @@ export const en = {
     subheading: 'Personal projects with APIs, persistence and component integration. Each description states the implementation stage.',
     statusDone: 'Completed',
     statusInProgress: 'In progress',
-    mainProject: 'Flagship project',
+    mainProject: 'Featured project',
     code: 'Code',
   },
   architecture: {

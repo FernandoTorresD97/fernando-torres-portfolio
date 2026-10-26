@@ -96,6 +96,7 @@ export const projects: Project[] = [
     },
     github: 'https://github.com/FernandoTorresD97/notification-api',
     docs: 'https://notification-api-il76.onrender.com/swagger-ui.html',
+    featured: true,
   },
   {
     id: 'automatizacao-artpizza',
