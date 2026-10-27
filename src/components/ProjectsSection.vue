@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { projects, statusLabel } from '../data/projects'
 import { useReveal } from '../composables/useReveal'
 import { useI18n } from '../i18n'
@@ -7,10 +7,41 @@ import { useI18n } from '../i18n'
 const { root } = useReveal()
 const { t, locale } = useI18n()
 const baseUrl = import.meta.env.BASE_URL
+const track = ref<HTMLDivElement | null>(null)
+const activeIndex = ref(0)
 const orderedProjects = computed(() => {
-  const priority = ['notification-api', 'automatizacao-artpizza', 'fiolaser']
+  const priority = ['catalogo-vagas-api', 'notification-api', 'automatizacao-artpizza', 'fiolaser']
   return [...projects].sort((a, b) => priority.indexOf(a.id) - priority.indexOf(b.id))
 })
+
+function goToProject(index: number) {
+  const nextIndex = Math.max(0, Math.min(index, orderedProjects.value.length - 1))
+  const slide = track.value?.children[nextIndex] as HTMLElement | undefined
+  const container = track.value
+  if (!slide || !container) return
+
+  activeIndex.value = nextIndex
+  const left = slide.getBoundingClientRect().left - container.getBoundingClientRect().left + container.scrollLeft
+  container.scrollTo({ left, behavior: 'smooth' })
+}
+
+function updateActiveProject() {
+  const container = track.value
+  if (!container) return
+
+  const slides = Array.from(container.children) as HTMLElement[]
+  const currentLeft = container.scrollLeft
+  activeIndex.value = slides.reduce((closest, slide, index) => {
+    const closestLeft = slides[closest].getBoundingClientRect().left - container.getBoundingClientRect().left + currentLeft
+    const slideLeft = slide.getBoundingClientRect().left - container.getBoundingClientRect().left + currentLeft
+    const closestDistance = Math.abs(closestLeft - currentLeft)
+    const distance = Math.abs(slideLeft - currentLeft)
+    return distance < closestDistance ? index : closest
+  }, 0)
+}
+
+onMounted(() => track.value?.addEventListener('scroll', updateActiveProject, { passive: true }))
+onUnmounted(() => track.value?.removeEventListener('scroll', updateActiveProject))
 </script>
 
 <template>
@@ -21,12 +52,50 @@ const orderedProjects = computed(() => {
       <p class="mt-4 text-ink-muted">{{ t('projects.subheading') }}</p>
     </div>
 
-    <div class="mt-12 grid lg:grid-cols-3 gap-6">
+    <div class="mt-10 flex items-center justify-between gap-4">
+      <p class="font-mono text-xs text-ink-muted" aria-live="polite">
+        {{ locale === 'pt' ? `Projeto ${activeIndex + 1} de ${orderedProjects.length}` : `Project ${activeIndex + 1} of ${orderedProjects.length}` }}
+      </p>
+      <div class="flex gap-2">
+        <button
+          type="button"
+          class="project-carousel-control"
+          :aria-label="locale === 'pt' ? 'Projeto anterior' : 'Previous project'"
+          :disabled="activeIndex === 0"
+          @click="goToProject(activeIndex - 1)"
+        >
+          <span aria-hidden="true">←</span>
+        </button>
+        <button
+          type="button"
+          class="project-carousel-control"
+          :aria-label="locale === 'pt' ? 'Próximo projeto' : 'Next project'"
+          :disabled="activeIndex === orderedProjects.length - 1"
+          @click="goToProject(activeIndex + 1)"
+        >
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </div>
+
+    <div
+      ref="track"
+      class="project-carousel-track mt-4"
+      role="region"
+      :aria-label="locale === 'pt' ? 'Projetos do portfólio' : 'Portfolio projects'"
+      aria-roledescription="carousel"
+      tabindex="0"
+      @keydown.left.prevent="goToProject(activeIndex - 1)"
+      @keydown.right.prevent="goToProject(activeIndex + 1)"
+    >
       <article
-        v-for="project in orderedProjects"
+        v-for="(project, index) in orderedProjects"
         :key="project.id"
-        class="reveal card p-6 flex flex-col"
-        :class="project.featured ? 'lg:col-span-1 ring-1 ring-signal-blue/30' : ''"
+        class="project-carousel-slide reveal card p-6 sm:p-8 flex flex-col"
+        :class="project.featured ? 'ring-1 ring-signal-blue/30' : ''"
+        role="group"
+        aria-roledescription="slide"
+        :aria-label="locale === 'pt' ? `${index + 1} de ${orderedProjects.length}` : `${index + 1} of ${orderedProjects.length}`"
       >
         <a v-if="project.image && project.details" :href="`${baseUrl}${project.details}`" class="block -mx-6 -mt-6 mb-6 overflow-hidden rounded-t-2xl border-b border-base-line focus-visible:outline focus-visible:outline-2 focus-visible:outline-signal-blue">
           <img :src="`${baseUrl}${project.image}`" :alt="project.imageAlt?.[locale] || project.title" class="w-full aspect-[16/10] object-cover object-top transition-transform duration-300 hover:scale-[1.025]" loading="lazy" width="1265" height="712">
@@ -81,6 +150,19 @@ const orderedProjects = computed(() => {
           </a>
         </div>
       </article>
+    </div>
+
+    <div class="mt-6 flex items-center justify-center gap-2" :aria-label="locale === 'pt' ? 'Selecionar projeto' : 'Select project'">
+      <button
+        v-for="(project, index) in orderedProjects"
+        :key="project.id"
+        type="button"
+        class="project-carousel-dot"
+        :class="activeIndex === index ? 'is-active' : ''"
+        :aria-label="locale === 'pt' ? `Ir para ${project.title}` : `Go to ${project.title}`"
+        :aria-current="activeIndex === index ? 'step' : undefined"
+        @click="goToProject(index)"
+      />
     </div>
   </section>
 </template>
