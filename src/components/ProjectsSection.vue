@@ -8,30 +8,38 @@ const { root } = useReveal()
 const { t, locale } = useI18n()
 const baseUrl = import.meta.env.BASE_URL
 const track = ref<HTMLDivElement | null>(null)
-const activeIndex = ref(0)
+const activePage = ref(0)
+const pageSize = ref(2)
 const orderedProjects = computed(() => {
   const priority = ['catalogo-vagas-api', 'notification-api', 'automatizacao-artpizza', 'fiolaser']
   return [...projects].sort((a, b) => priority.indexOf(a.id) - priority.indexOf(b.id))
 })
+const projectPages = computed(() => {
+  const pages: typeof orderedProjects.value[] = []
+  for (let index = 0; index < orderedProjects.value.length; index += pageSize.value) {
+    pages.push(orderedProjects.value.slice(index, index + pageSize.value))
+  }
+  return pages
+})
 
-function goToProject(index: number) {
-  const nextIndex = Math.max(0, Math.min(index, orderedProjects.value.length - 1))
+function goToPage(index: number) {
+  const nextIndex = Math.max(0, Math.min(index, projectPages.value.length - 1))
   const slide = track.value?.children[nextIndex] as HTMLElement | undefined
   const container = track.value
   if (!slide || !container) return
 
-  activeIndex.value = nextIndex
+  activePage.value = nextIndex
   const left = slide.getBoundingClientRect().left - container.getBoundingClientRect().left + container.scrollLeft
   container.scrollTo({ left, behavior: 'smooth' })
 }
 
-function updateActiveProject() {
+function updateActivePage() {
   const container = track.value
   if (!container) return
 
   const slides = Array.from(container.children) as HTMLElement[]
   const currentLeft = container.scrollLeft
-  activeIndex.value = slides.reduce((closest, slide, index) => {
+  activePage.value = slides.reduce((closest, slide, index) => {
     const closestLeft = slides[closest].getBoundingClientRect().left - container.getBoundingClientRect().left + currentLeft
     const slideLeft = slide.getBoundingClientRect().left - container.getBoundingClientRect().left + currentLeft
     const closestDistance = Math.abs(closestLeft - currentLeft)
@@ -40,8 +48,26 @@ function updateActiveProject() {
   }, 0)
 }
 
-onMounted(() => track.value?.addEventListener('scroll', updateActiveProject, { passive: true }))
-onUnmounted(() => track.value?.removeEventListener('scroll', updateActiveProject))
+let mobileQuery: MediaQueryList | null = null
+function updatePageSize() {
+  if (!mobileQuery) return
+  const nextSize = mobileQuery.matches ? 1 : 2
+  if (pageSize.value === nextSize) return
+  pageSize.value = nextSize
+  activePage.value = 0
+  track.value?.scrollTo({ left: 0 })
+}
+
+onMounted(() => {
+  mobileQuery = window.matchMedia('(max-width: 767px)')
+  updatePageSize()
+  mobileQuery.addEventListener('change', updatePageSize)
+  track.value?.addEventListener('scroll', updateActivePage, { passive: true })
+})
+onUnmounted(() => {
+  mobileQuery?.removeEventListener('change', updatePageSize)
+  track.value?.removeEventListener('scroll', updateActivePage)
+})
 </script>
 
 <template>
@@ -52,51 +78,30 @@ onUnmounted(() => track.value?.removeEventListener('scroll', updateActiveProject
       <p class="mt-4 text-ink-muted">{{ t('projects.subheading') }}</p>
     </div>
 
-    <div class="mt-10 flex items-center justify-between gap-4">
-      <p class="font-mono text-xs text-ink-muted" aria-live="polite">
-        {{ locale === 'pt' ? `Projeto ${activeIndex + 1} de ${orderedProjects.length}` : `Project ${activeIndex + 1} of ${orderedProjects.length}` }}
-      </p>
-      <div class="flex gap-2">
-        <button
-          type="button"
-          class="project-carousel-control"
-          :aria-label="locale === 'pt' ? 'Projeto anterior' : 'Previous project'"
-          :disabled="activeIndex === 0"
-          @click="goToProject(activeIndex - 1)"
-        >
-          <span aria-hidden="true">←</span>
-        </button>
-        <button
-          type="button"
-          class="project-carousel-control"
-          :aria-label="locale === 'pt' ? 'Próximo projeto' : 'Next project'"
-          :disabled="activeIndex === orderedProjects.length - 1"
-          @click="goToProject(activeIndex + 1)"
-        >
-          <span aria-hidden="true">→</span>
-        </button>
-      </div>
-    </div>
-
     <div
       ref="track"
-      class="project-carousel-track mt-4"
+      class="project-carousel-track mt-12"
       role="region"
       :aria-label="locale === 'pt' ? 'Projetos do portfólio' : 'Portfolio projects'"
       aria-roledescription="carousel"
       tabindex="0"
-      @keydown.left.prevent="goToProject(activeIndex - 1)"
-      @keydown.right.prevent="goToProject(activeIndex + 1)"
+      @keydown.left.prevent="goToPage(activePage - 1)"
+      @keydown.right.prevent="goToPage(activePage + 1)"
     >
-      <article
-        v-for="(project, index) in orderedProjects"
-        :key="project.id"
-        class="project-carousel-slide reveal card p-6 sm:p-8 flex flex-col"
-        :class="project.featured ? 'ring-1 ring-signal-blue/30' : ''"
+      <div
+        v-for="(page, index) in projectPages"
+        :key="index"
+        class="project-carousel-page"
         role="group"
         aria-roledescription="slide"
-        :aria-label="locale === 'pt' ? `${index + 1} de ${orderedProjects.length}` : `${index + 1} of ${orderedProjects.length}`"
+        :aria-label="locale === 'pt' ? `Página ${index + 1} de ${projectPages.length}` : `Page ${index + 1} of ${projectPages.length}`"
       >
+        <article
+          v-for="project in page"
+          :key="project.id"
+          class="project-carousel-card reveal card p-6 flex flex-col"
+          :class="project.featured ? 'ring-1 ring-signal-blue/30' : ''"
+        >
         <a v-if="project.image && project.details" :href="`${baseUrl}${project.details}`" class="block -mx-6 -mt-6 mb-6 overflow-hidden rounded-t-2xl border-b border-base-line focus-visible:outline focus-visible:outline-2 focus-visible:outline-signal-blue">
           <img :src="`${baseUrl}${project.image}`" :alt="project.imageAlt?.[locale] || project.title" class="w-full aspect-[16/10] object-cover object-top transition-transform duration-300 hover:scale-[1.025]" loading="lazy" width="1265" height="712">
         </a>
@@ -149,20 +154,45 @@ onUnmounted(() => track.value?.removeEventListener('scroll', updateActiveProject
             {{ t('projects.code') }}
           </a>
         </div>
-      </article>
+        </article>
+      </div>
     </div>
 
-    <div class="mt-6 flex items-center justify-center gap-2" :aria-label="locale === 'pt' ? 'Selecionar projeto' : 'Select project'">
+    <p class="sr-only" aria-live="polite">
+      {{ locale === 'pt' ? `Página ${activePage + 1} de ${projectPages.length}` : `Page ${activePage + 1} of ${projectPages.length}` }}
+    </p>
+    <div class="project-carousel-navigation mt-5" role="group" :aria-label="locale === 'pt' ? 'Navegação dos projetos' : 'Project navigation'">
       <button
-        v-for="(project, index) in orderedProjects"
-        :key="project.id"
+        type="button"
+        class="project-carousel-control"
+        :aria-label="locale === 'pt' ? 'Página anterior' : 'Previous page'"
+        :disabled="activePage === 0"
+        @click="goToPage(activePage - 1)"
+      >
+        <span aria-hidden="true">←</span>
+      </button>
+      <div class="flex items-center gap-2" role="group" :aria-label="locale === 'pt' ? 'Selecionar projeto' : 'Select project'">
+      <button
+        v-for="(page, index) in projectPages"
+        :key="index"
         type="button"
         class="project-carousel-dot"
-        :class="activeIndex === index ? 'is-active' : ''"
-        :aria-label="locale === 'pt' ? `Ir para ${project.title}` : `Go to ${project.title}`"
-        :aria-current="activeIndex === index ? 'step' : undefined"
-        @click="goToProject(index)"
+        :class="activePage === index ? 'is-active' : ''"
+        :aria-label="locale === 'pt' ? `Ir para página ${index + 1}: ${page.map(project => project.title).join(' e ')}` : `Go to page ${index + 1}: ${page.map(project => project.title).join(' and ')}`"
+        :aria-current="activePage === index ? 'step' : undefined"
+        @click="goToPage(index)"
       />
+      </div>
+      <span class="font-mono text-[11px] text-ink-muted tabular-nums">{{ activePage + 1 }} / {{ projectPages.length }}</span>
+      <button
+        type="button"
+        class="project-carousel-control"
+        :aria-label="locale === 'pt' ? 'Próxima página' : 'Next page'"
+        :disabled="activePage === projectPages.length - 1"
+        @click="goToPage(activePage + 1)"
+      >
+        <span aria-hidden="true">→</span>
+      </button>
     </div>
   </section>
 </template>
