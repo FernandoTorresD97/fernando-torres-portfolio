@@ -19,6 +19,38 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'catalogo-vagas-api',
+    status: 'in-progress',
+    title: 'Catálogo de Vagas API',
+    tagline: {
+      pt: 'API e dashboard para busca de vagas com filtros e paginação estável',
+      en: 'Job search API and dashboard with filters and stable pagination',
+    },
+    description: {
+      pt: 'API Java 21 com Spring Boot, PostgreSQL e Redis para um catálogo de vagas. Inclui endpoints de listagem e detalhes, filtros combináveis, ordenação, paginação por deslocamento ou cursor e dashboard interativo. Projeto em evolução, com dados demonstrativos.',
+      en: 'Java 21 API with Spring Boot, PostgreSQL and Redis for a job catalog. Includes listing and detail endpoints, combined filters, sorting, offset or cursor pagination and an interactive dashboard. Ongoing project with sample data.',
+    },
+    stack: ['Java 21', 'Spring Boot', 'PostgreSQL', 'Redis', 'Spring Data JPA', 'Flyway', 'Testcontainers', 'JUnit 5', 'OpenAPI', 'Docker Compose'],
+    highlights: {
+      pt: [
+        '12 testes de integração com PostgreSQL e Redis via Testcontainers',
+        'Filtros combináveis, ordenação por ID ou cargo e paginação por cursor',
+        'Cache Redis com invalidação direcionada após alterações em vagas',
+        'Contrato OpenAPI, chave para rotas administrativas e métricas HTTP',
+        'Dashboard responsivo com busca, filtros e detalhes da vaga',
+      ],
+      en: [
+        '12 integration tests using PostgreSQL and Redis via Testcontainers',
+        'Combined filters, ID or title sorting and cursor pagination',
+        'Redis cache with targeted invalidation after job changes',
+        'OpenAPI contract, API key for admin routes and HTTP metrics',
+        'Responsive dashboard with search, filters and job details',
+      ],
+    },
+    github: 'https://github.com/FernandoTorresD97/catalogo-vagas-api',
+    featured: true,
+  },
+  {
     id: 'fiolaser',
     status: 'in-progress',
     title: 'Fiolaser · Agendamentos',
